@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Restarted AsyncTask</string>
+    <string name="activity_name_retained_at">Retained AsyncTask</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="button_label_load">Load</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="restarting_asynctask">Restarting AsyncTask</string>
+    <string name="retained_asynctask">Retained AsyncTask</string>
+
+</resources>
