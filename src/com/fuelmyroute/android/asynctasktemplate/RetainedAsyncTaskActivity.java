@@ -111,7 +111,7 @@ public class RetainedAsyncTaskActivity extends Activity {
 		Log.d(TAG, "onDestroy");
 		super.onDestroy();
 
-		// If we have a running task and we are finished, then go ahead and
+		// If we have a running task and we are finishing, then go ahead and
 		// cancel it
 		if (isFinishing()) {
 			onCancelLoad();
