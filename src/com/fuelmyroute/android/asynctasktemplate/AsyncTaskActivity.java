@@ -60,15 +60,20 @@ public class AsyncTaskActivity extends Activity {
 		onCancelLoad();
 	}
 
-	private void onCancelLoad() {
+	private boolean onCancelLoad() {
 
 		if (loadTask != null
 				&& loadTask.getStatus() == AsyncTask.Status.RUNNING) {
+			// NOTE: if you need to dismiss dialogs, then you will need to do that in 
+			// the Activity, on the UI thread, before calling AsyncTask.cancel
 			loadTask.cancel(true);
 			loadTask = null;
+			return true;
 		}
+		return false;
 	}
 
+	// TODO: why not just do this in onCreate?
 	@Override
 	protected void onRestoreInstanceState(Bundle savedInstanceState) {
 
@@ -100,16 +105,12 @@ public class AsyncTaskActivity extends Activity {
 
 	private void saveLoadTask(Bundle outState) {
 
-		if (loadTask != null
-				&& loadTask.getStatus() != AsyncTask.Status.FINISHED) {
-			loadTask.cancel(true);
-
+		if (onCancelLoad()){
+			
 			if (max != 0) {
 				outState.putBoolean(STATE_LOAD_IN_PROGRESS, true);
 				outState.putInt(STATE_LOAD_MAX, max);
 			}
-
-			loadTask = null;
 		}
 	}
 
